@@ -10,17 +10,13 @@ j = 0
 
 while(1):
     ret, frame = cap.read()
-    #Convert each frame to gray scale and subtract the background
     try:
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         fgmask = fgbg.apply(gray)
         
-        #Find contours
         contours, _ = cv2.findContours(fgmask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
         if contours:
-        
-            # List to hold all areas
             areas = []
 
             for contour in contours:
@@ -50,7 +46,6 @@ while(1):
             if h > w:
                 j = 0 
                 cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,0),2)
-
 
             cv2.imshow('video', frame)
         
