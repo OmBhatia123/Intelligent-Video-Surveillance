@@ -1,15 +1,15 @@
 import cv2, time
-from datetime  import datetime
+from datetime import datetime
 import argparse
 import os
 
-face_casacde=cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+face_casacde = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 
 
 video = cv2.VideoCapture(0)
 
 while True:
-    check,frame=video.read()
+    check,frame = video.read()
     if frame is not None:
         gray=cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
         faces = face_casacde.detectMultiScale(gray,scaleFactor=1.1,minNeighbors=10)
